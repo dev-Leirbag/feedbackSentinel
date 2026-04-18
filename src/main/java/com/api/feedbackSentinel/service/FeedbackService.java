@@ -1,4 +1,4 @@
-package com.api.feedbackSentinel;
+package com.api.feedbackSentinel.service;
 
 import com.api.feedbackSentinel.repository.FeedbackRepository;
 import lombok.RequiredArgsConstructor;
