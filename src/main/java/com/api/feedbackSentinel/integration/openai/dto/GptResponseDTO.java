@@ -1,4 +1,4 @@
-package integration.openai.dto;
+package com.api.feedbackSentinel.integration.openai.dto;
 
 import java.util.List;
 

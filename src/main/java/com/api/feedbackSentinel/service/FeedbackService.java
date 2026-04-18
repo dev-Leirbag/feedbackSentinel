@@ -4,7 +4,7 @@ import com.api.feedbackSentinel.dto.FeedbackRequestDTO;
 import com.api.feedbackSentinel.dto.FeedbackResponseDTO;
 import com.api.feedbackSentinel.model.Feedback;
 import com.api.feedbackSentinel.repository.FeedbackRepository;
-import integration.openai.service.GptIntegrationService;
+import com.api.feedbackSentinel.integration.openai.service.GptIntegrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,7 +40,7 @@ public class FeedbackService {
                     feedbackSalvo.getId(),
                     feedbackSalvo.getTextoOriginal(),
                     feedbackSalvo.getSentimento(),
-                    feedbackSalvo.getCategoria(),
+                    feedbackSalvo.getCategoria()
             );
 
         }catch(Exception e){
