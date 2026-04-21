@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +49,17 @@ public class FeedbackService {
         }catch(Exception e){
             throw new RuntimeException("Falha ao tentar processar o JSON da IA: " + e.getMessage(), e);
         }
+    }
 
+    public List<FeedbackResponseDTO> listaFeedback() {
+        List<Feedback> feedbacks = feedbackRepository.findAll();
+
+        return feedbacks.stream()
+                .map(feeback -> {
+                    var dtoResponse = new FeedbackResponseDTO(feeback.getId(), feeback.getTextoOriginal(),
+                            feeback.getSentimento(), feeback.getCategoria());
+                    return dtoResponse;
+                })
+                .collect(Collectors.toList());
     }
 }

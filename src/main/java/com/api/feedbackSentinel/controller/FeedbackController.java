@@ -6,11 +6,12 @@ import com.api.feedbackSentinel.service.FeedbackService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/sentinel")
 @RequiredArgsConstructor
 public class FeedbackController {
 
@@ -21,7 +22,12 @@ public class FeedbackController {
         var feedbackResponse = feedBackService.processaFeedback(feedbackRequestDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(feedbackResponse);
-
     }
 
+    @GetMapping("/listar")
+    public ResponseEntity<List<FeedbackResponseDTO>> listaFeedback(){
+        var listaFeedback = feedBackService.listaFeedback();
+        return ResponseEntity.status(HttpStatus.OK).body(listaFeedback);
+
+    }
 }
