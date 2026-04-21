@@ -62,4 +62,13 @@ public class FeedbackService {
                 })
                 .collect(Collectors.toList());
     }
+
+    public FeedbackResponseDTO listaFeedbackPorId (Long id){
+        Feedback feedbackEncontrado = feedbackRepository.findById(id).orElse(null);
+
+        var feedbackDto = new FeedbackResponseDTO(feedbackEncontrado.getId(), feedbackEncontrado.getTextoOriginal(),
+                feedbackEncontrado.getCategoria(), feedbackEncontrado.getSentimento());
+
+        return feedbackDto;
+    }
 }

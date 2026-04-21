@@ -30,4 +30,9 @@ public class FeedbackController {
         return ResponseEntity.status(HttpStatus.OK).body(listaFeedback);
 
     }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<FeedbackResponseDTO> listaFeedbackPorId(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(feedBackService.listaFeedbackPorId(id));
+    }
 }
